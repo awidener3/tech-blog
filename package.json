@@ -1,0 +1,27 @@
+{
+  "name": "tech-blog",
+  "version": "1.0.0",
+  "description": "This is a homework assignment from the UCF Full-Stack Coding Bootcamp. In this project, I am tasked with creating a tech blog, utilizing MVC methods and file structure, that will use MySQL to store data, and express-handlebars as a template engine.",
+  "main": "server.js",
+  "scripts": {
+    "start": "npm start"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/awidener3/tech-blog.git"
+  },
+  "author": "Alex Widener",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/awidener3/tech-blog/issues"
+  },
+  "homepage": "https://github.com/awidener3/tech-blog#readme",
+  "dependencies": {
+    "bcrypt": "^5.0.1",
+    "dotenv": "^16.0.0",
+    "express": "^4.17.2",
+    "express-handlebars": "^6.0.2",
+    "mysql2": "^2.3.3",
+    "sequelize": "^6.16.0"
+  }
+}
