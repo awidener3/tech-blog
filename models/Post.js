@@ -12,13 +12,13 @@ Post.init(
 			autoIncrement: true,
 		},
 		text: {
-			type: DataTypes.STRING,
+			type: DataTypes.TEXT,
 			allowNull: false,
 		},
 		user_id: {
 			type: DataTypes.INTEGER,
 			references: {
-				model: 'user',
+				model: 'users',
 				key: 'id',
 			},
 		},
