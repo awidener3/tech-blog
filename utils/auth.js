@@ -1,6 +1,5 @@
 const withAuth = (req, res, next) => {
-  // What functionality are we missing?
-
+	!req.session.logged_in ? res.redirect('/login') : next();
 };
 
 module.exports = withAuth;

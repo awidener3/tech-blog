@@ -1,9 +1,33 @@
-// What are we missing to be required here?
+const { Model, DataTypes } = require('sequelize');
+const sequelize = require('../config/connection');
 
 class Post extends Model {}
 
 Post.init(
-  // Finish the post expression
+	{
+		id: {
+			type: DataTypes.INTEGER,
+			allowNull: false,
+			primaryKey: true,
+			autoIncrement: true,
+		},
+		text: {
+			type: DataTypes.STRING,
+			allowNull: false,
+		},
+		user_id: {
+			type: DataTypes.INTEGER,
+			references: {
+				model: 'user',
+				key: 'id',
+			},
+		},
+	},
+	{
+		sequelize,
+		underscored: true,
+		modelName: 'post',
+	}
 );
 
 module.exports = Post;
