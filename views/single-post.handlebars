@@ -1,4 +1,6 @@
 <div class="container mt-5">
+
+    {{!-- post --}}
     <div class="card m-3">
         <div class="card-header">
             <h3 class="card-title">{{post.title}}</h3>
@@ -11,6 +13,7 @@
         </div>
     </div>
 
+    {{!-- comment form --}}
     <form id="new-comment-form" class="p-3">
         <h5>What Do You Think?</h5>
         <div class="input-group mb-3">
@@ -25,7 +28,7 @@
         {{/if}}
     </form>
 
-    {{!-- Find a way to get all post comments --}}
+    {{!-- saved comments --}}
     {{#each comments as |comment|}}
 
     <div class="card m-3">

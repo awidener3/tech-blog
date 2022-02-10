@@ -5,7 +5,7 @@
             <a href="/post/{{post.id}}">
                 <h3 class="card-title">{{post.title}}</h3>
             </a>
-            <p class="card-subtitle text-muted">{{post.user.username}}</p>
+            <p class="card-subtitle text-muted">{{post.user.username}} - {{format_date post.user.createdAt}}</p>
         </div>
         <div class="card-body">
             <p class="card-text">
