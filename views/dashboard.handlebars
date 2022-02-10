@@ -3,7 +3,7 @@
         <h2>Welcome back, {{username}}!</h2>
     </div>
 
-    <div class="col-8 mx-auto border p-3 mt-4">
+    <div class="col-8 mx-auto border p-3 my-4">
         <form id="new-post-form">
             <h3>Write a New Post:</h3>
 
@@ -21,25 +21,29 @@
                 <button type="submit" class="btn btn-primary">Create</button>
             </div>
         </form>
+    </div>
 
-        {{!-- Add current posts here --}}
-        {{#if projects.length}}
-        <div class="col-md-6 project-list">
-            <h3>Current Projects:</h3>
+    {{!-- Add current posts here --}}
+        {{#if posts.length}}
+        <div class="col-8 mx-auto">
+            <h3>Your Posts:</h3>
 
-            {{#each projects as |project|}}
-            <div class="row mb-2">
-            <div class="col-md-8">
-                <h4><a href="/project/{{project.id}}">{{project.name}}</a></h4>
+            <div class="container mb-2 post-list">
+                {{#each posts as |post|}}
+                <input type="hidden" name="post-id" value="{{post.id}}">
+                <div class="card mb-4">
+                    <div class="card-header">
+                        <h4><a href="/post/{{post.id}}">{{post.title}}</a></h4>
+                    </div>
+                    <div class="card-body">
+                        <p>{{post.text}}</p>
+                        <a id="edit-btn" href="/post/edit/{{post.id}}" class="btn btn-sm btn-secondary" data-id="{{post.id}}">Edit</a>
+                    </div>
+                </div>
+                {{/each}}
             </div>
-            <div class="col-md-4">
-                <button class="btn btn-sm btn-danger" data-id="{{project.id}}">DELETE</button>
-            </div>
-            </div>
-            {{/each}}
         </div>
         {{/if}}
-    </div>
 </div>
 
 <script src="/js/new.js"></script>
