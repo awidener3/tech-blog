@@ -1,0 +1,45 @@
+<div class="container p-3 mt-5">
+    <div class="text-center">
+        <h2>Welcome back, User!</h2>
+    </div>
+
+    <div class="col-8 mx-auto border p-3 mt-4">
+        <form id="new-post-form">
+            <h3>Write a New Post:</h3>
+
+            <div class="mb-3">
+                <label for="post-title" class="form-label">Title:</label>
+                <input class="form-control" type="text" id="post-title" name="project-name" placeholder="An inspiring title..." required/>
+            </div>
+
+            <div class="mb-3">
+                <label for="post-body" class="form-label">Body:</label>
+                <textarea class="form-control" id="post-body" name="post-body" placeholder="Some convincing text..." required></textarea>
+            </div>
+
+            <div class="mb-3">
+                <button type="submit" class="btn btn-primary">Create</button>
+            </div>
+        </form>
+
+        {{!-- Add current posts here --}}
+        {{#if projects.length}}
+        <div class="col-md-6 project-list">
+            <h3>Current Projects:</h3>
+
+            {{#each projects as |project|}}
+            <div class="row mb-2">
+            <div class="col-md-8">
+                <h4><a href="/project/{{project.id}}">{{project.name}}</a></h4>
+            </div>
+            <div class="col-md-4">
+                <button class="btn btn-sm btn-danger" data-id="{{project.id}}">DELETE</button>
+            </div>
+            </div>
+            {{/each}}
+        </div>
+        {{/if}}
+    </div>
+</div>
+
+<script src="/js/new.js"></script>

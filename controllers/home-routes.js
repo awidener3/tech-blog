@@ -1,18 +1,22 @@
 const router = require('express').Router();
 const { Post, Comment, User } = require('../models');
+const withAuth = require('../utils/auth');
 
-// get all posts for homepage + comments and authors
+// get all posts with user data
 router.get('/', async (req, res) => {
 	try {
 		const postData = await Post.findAll({
-			include: [{ model: User }, { model: Comment }],
+			include: {
+				model: User,
+				attributes: ['username'],
+			},
 		});
 
-		const posts = postData.map((post) => post.toJSON());
+		// Serialize data
+		const posts = postData.map((post) => post.get({ plain: true }));
 
 		res.render('all-posts', {
 			posts,
-			logged_in: req.session.logged_in,
 		});
 	} catch (err) {
 		res.status(500).json(err);
@@ -23,14 +27,18 @@ router.get('/', async (req, res) => {
 router.get('/post/:id', async (req, res) => {
 	try {
 		const postData = await Post.findByPk(req.params.id, {
-			include: [{ model: User }, { model: Comment }],
+			include: [
+				{ model: User, attributes: ['username'] },
+				{ model: Comment, attributes: ['text'] },
+			],
 		});
 
 		const post = postData.get({ plain: true });
+		const comments = post.comments;
 
 		res.render('single-post', {
-			...project,
-			logged_in: req.session.logged_in,
+			post,
+			comments,
 		});
 	} catch (err) {
 		res.status(500).json(err);
@@ -39,15 +47,22 @@ router.get('/post/:id', async (req, res) => {
 
 // redirect to login
 router.get('/login', (req, res) => {
-	if (req.session.logged_in) {
-		res.redirect('/profile');
-		return;
-	}
+	// TODO: add this back in later
+	// if (req.session.logged_in) {
+	// 	res.redirect('/dashboard');
+	// 	return;
+	// }
 
 	res.render('login');
 });
 
-// redirect to sign up
-router.get('/signup', (req, res) => {});
+// TODO: redirect to sign up
+router.get('/signup', (req, res) => {
+	res.render('signup');
+});
+
+router.get('/dashboard', (req, res) => {
+	res.render('dashboard');
+});
 
 module.exports = router;

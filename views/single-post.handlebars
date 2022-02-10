@@ -1,3 +1,20 @@
+<div class="container mt-5">
+    <div class="card m-3">
+        <div class="card-header">
+            <h3 class="card-title">{{post.title}}</h3>
+            <p class="card-subtitle text-muted">{{post.user.username}}</p>
+        </div>
+        <div class="card-body">
+            <p class="card-text">
+                {{post.text}}
+            </p>
+        </div>
+    </div>
 
+    {{!-- Find a way to get all post comments --}}
+    {{#each comments as |comment|}}
+    <p>{{comment.text}}</p>
+    {{/each}}
+</div>
 
 <script src="/js/comment.js"></script>
