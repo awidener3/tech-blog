@@ -28,11 +28,19 @@ router.get('/post/:id', async (req, res) => {
 	try {
 		const postData = await Post.findByPk(req.params.id, {
 			include: [
-				{ model: User, attributes: ['username'] },
-				{ model: Comment, attributes: ['text'] },
+				{ model: User },
+				{
+					model: Comment,
+					include: {
+						model: User,
+					},
+				},
 			],
 		});
 
+		if (!postData) {
+			res.status(404).json({ message: 'No post by that id!' });
+		}
 		const post = postData.get({ plain: true });
 		const comments = post.comments;
 
