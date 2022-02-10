@@ -21,15 +21,6 @@ User.init(
 			allowNull: false,
 			unique: true, // TODO: check if this is needed
 		},
-		email: {
-			type: DataTypes.STRING,
-			unique: true,
-			allowNull: false,
-			validate: {
-				// TODO: check if I need more validation
-				isEmail: true,
-			},
-		},
 		password: {
 			type: DataTypes.STRING,
 			allowNull: false,

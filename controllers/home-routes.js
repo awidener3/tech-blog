@@ -17,6 +17,7 @@ router.get('/', async (req, res) => {
 
 		res.render('all-posts', {
 			posts,
+			logged_in: req.session.logged_in,
 		});
 	} catch (err) {
 		res.status(500).json(err);
@@ -47,6 +48,7 @@ router.get('/post/:id', async (req, res) => {
 		res.render('single-post', {
 			post,
 			comments,
+			logged_in: req.session.logged_in,
 		});
 	} catch (err) {
 		res.status(500).json(err);
@@ -55,22 +57,35 @@ router.get('/post/:id', async (req, res) => {
 
 // redirect to login
 router.get('/login', (req, res) => {
-	// TODO: add this back in later
-	// if (req.session.logged_in) {
-	// 	res.redirect('/dashboard');
-	// 	return;
-	// }
+	if (req.session.logged_in) {
+		res.redirect('/dashboard');
+		return;
+	}
 
 	res.render('login');
 });
 
-// TODO: redirect to sign up
+// redirect to sign up
 router.get('/signup', (req, res) => {
 	res.render('signup');
 });
 
-router.get('/dashboard', (req, res) => {
-	res.render('dashboard');
+router.get('/dashboard', withAuth, async (req, res) => {
+	try {
+		const userData = await User.findByPk(req.session.user_id, {
+			attributes: { exclude: ['password'] },
+			include: [{ model: Post }],
+		});
+
+		const user = userData.get({ plain: true });
+
+		res.render('dashboard', {
+			...user,
+			logged_in: req.session.logged_in,
+		});
+	} catch (err) {
+		res.status(500).json(err);
+	}
 });
 
 module.exports = router;
