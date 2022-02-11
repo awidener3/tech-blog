@@ -1,16 +1,20 @@
 <div class="container p-3 mt-5">
     <div class="col-8 mx-auto">
-        <form id="login-form" class="mb-3">
-            <h2>Login</h2>
-            <div class="mb-3">
+        <h1 class="display-3 text-center mb-5">Welcome Back!</h1>
+
+        {{!-- login form --}}
+        <form id="login-form" class="mb-3 card">
+            <h2 class="card-header">Login</h2>
+            <div class="card-body">
                 <label for="username-input-login" class="form-label">Username</label>
                 <input type="text" class="form-control" id="username-input-login" aria-describedby="username login" required>
             </div>
-            <div class="mb-3">
+
+            <div class="card-body">
                 <label for="password-input-login" class="form-label">Password</label>
                 <input type="password" class="form-control" id="password-input-login" required>
             </div>
-            <button type="submit" class="btn btn-primary">Login</button>
+            <button type="submit" class="btn btn-primary m-3">Login</button>
         </form>
 
         <a href="/signup">Signup Instead</a>

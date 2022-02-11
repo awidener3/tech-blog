@@ -1,7 +1,7 @@
 const router = require('express').Router();
 const { User } = require('../../models');
 
-// * /api/user
+// * /api/user endpoint
 
 // Create a user
 router.post('/', async (req, res) => {
@@ -23,8 +23,8 @@ router.post('/', async (req, res) => {
 	}
 });
 
+// Handle login
 router.post('/login', async (req, res) => {
-	// Create the correct asychronous function for this login post request with error handling
 	try {
 		const userData = await User.findOne({
 			where: { username: req.body.username },
@@ -55,8 +55,8 @@ router.post('/login', async (req, res) => {
 	}
 });
 
+// Handle logout
 router.post('/logout', (req, res) => {
-	// Create the correct functionality for this post request with error handling
 	try {
 		if (req.session.logged_in) {
 			req.session.destroy(() => {

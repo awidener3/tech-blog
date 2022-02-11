@@ -1,7 +1,7 @@
 <div class="container mt-5">
 
     {{!-- post --}}
-    <div class="card m-3">
+    <div class="card custom-card m-3">
         <div class="card-header">
             <h3 class="card-title">{{post.title}}</h3>
             <p class="card-subtitle text-muted">{{post.user.username}} - {{format_date post.user.createdAt}}</p>
@@ -31,7 +31,7 @@
     {{!-- saved comments --}}
     {{#each comments as |comment|}}
 
-    <div class="card m-3">
+    <div class="card custom-card m-3">
         <div class="card-body">
         <h5 class="card-subtitle text-muted">{{comment.user.username}}</h5>
         <p>{{format_date comment.user.createdAt}}</p>

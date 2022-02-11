@@ -19,13 +19,12 @@ User.init(
 		username: {
 			type: DataTypes.STRING,
 			allowNull: false,
-			unique: true, // TODO: check if this is needed
+			unique: true,
 		},
 		password: {
 			type: DataTypes.STRING,
 			allowNull: false,
 			validate: {
-				// TODO: see what other validation can go here
 				len: [6],
 			},
 		},

@@ -2,7 +2,7 @@ const router = require('express').Router();
 const { Post } = require('../../models');
 const withAuth = require('../../utils/auth');
 
-// * /api/post
+// * /api/post endpoint
 
 // Get posts
 router.get('/', async (req, res) => {
@@ -27,7 +27,6 @@ router.post('/', withAuth, async (req, res) => {
 
 // Update a post
 router.put('/:id', withAuth, async (req, res) => {
-	//Complete the asychronous function with error handling
 	try {
 		let updatedPost = await Post.update(req.body, {
 			where: {
@@ -58,7 +57,7 @@ router.delete('/:id', withAuth, async (req, res) => {
 		});
 
 		if (!postData) {
-			res.status(404).json({ message: 'No post found with this id!' });
+			res.status(404).json({ message: 'No post found with that ID' });
 			return;
 		}
 
