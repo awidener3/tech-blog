@@ -20,6 +20,7 @@ On the home page, the user can also click on any post which will redirect them t
 
 ## 🔍 Preview
 
+https://user-images.githubusercontent.com/70721378/153522710-7542b024-44e3-464c-bf2b-8a7f78ffa427.mp4
 
 ## 📷 Screenshots
 ![Home page](images/usage-1.png)
