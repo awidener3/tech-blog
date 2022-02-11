@@ -22,7 +22,17 @@ On the home page, the user can also click on any post which will redirect them t
 
 
 ## 📷 Screenshots
+![Home page](images/usage-1.png)
 
+![Sign up page](images/usage-2.png)
+
+![Login page](images/usage-3.png)
+
+![Dashboard](images/usage-4.png)
+
+![Edit a Post](images/usage-5.png)
+
+![Comments](images/usage-6.png)
 
 ## User Story
 
