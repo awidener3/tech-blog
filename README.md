@@ -1,4 +1,4 @@
-# 📝 Homework #9: Note-Taker
+# 📝 Note-Taker
 
 📌 [Link to Deployed Application](https://awidener-tech-blog.herokuapp.com/)
 
